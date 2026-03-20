@@ -20,12 +20,6 @@
     };
 
     const els = {
-        apiModal: $('#api-modal'),
-        apiKeyInput: $('#api-key-input'),
-        saveApiKey: $('#save-api-key'),
-        toggleKeyVis: $('#toggle-key-visibility'),
-        settingsBtn: $('#settings-btn'),
-
         dropZone: $('#drop-zone'),
         fileInput: $('#file-input'),
         cameraBtn: $('#camera-btn'),
@@ -70,8 +64,6 @@
     function init() {
         toyAnimations.createUploadParticles(els.particles);
 
-        if (!toyAPI.hasKey()) showModal();
-
         toyAnimations.init(els.characterImageWrapper, els.sparkles);
 
         toyVoice.onSpeakStart = () => toyAnimations.startTalking();
@@ -106,16 +98,6 @@
 
     // ===== EVENTS =====
     function bindEvents() {
-        // API Key
-        els.saveApiKey.addEventListener('click', saveApiKey);
-        els.apiKeyInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') saveApiKey(); });
-        els.toggleKeyVis.addEventListener('click', () => {
-            const inp = els.apiKeyInput;
-            inp.type = inp.type === 'password' ? 'text' : 'password';
-            els.toggleKeyVis.textContent = inp.type === 'password' ? '👁️' : '🙈';
-        });
-        els.settingsBtn.addEventListener('click', showModal);
-
         // Drop zone — click only on the zone itself, not the buttons inside
         els.dropZone.addEventListener('click', (e) => {
             if (e.target.closest('#browse-btn') || e.target.closest('#camera-btn')) return;
@@ -195,22 +177,6 @@
     function showScreen(name) {
         Object.values(screens).forEach(s => s.classList.remove('active'));
         screens[name].classList.add('active');
-    }
-
-    // ===== MODAL =====
-    function showModal() {
-        els.apiModal.classList.remove('hidden');
-        els.apiKeyInput.value = toyAPI.apiKey || '';
-        setTimeout(() => els.apiKeyInput.focus(), 100);
-    }
-    function hideModal() { els.apiModal.classList.add('hidden'); }
-
-    function saveApiKey() {
-        const key = els.apiKeyInput.value.trim();
-        if (!key) { showToast('Please enter an API key', 'error'); return; }
-        toyAPI.setKey(key);
-        hideModal();
-        showToast('API key saved!');
     }
 
     // ===== CAMERA =====
@@ -329,7 +295,6 @@
     // ===== BRING TO LIFE =====
     async function bringToLife() {
         if (!currentImage) return;
-        if (!toyAPI.hasKey()) { showModal(); return; }
 
         const userDescription = els.toyDescription.value.trim();
 

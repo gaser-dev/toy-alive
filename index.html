@@ -16,21 +16,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- API Key Modal -->
-    <div id="api-modal" class="modal hidden">
-        <div class="modal-backdrop"></div>
-        <div class="modal-content glass-card">
-            <div class="modal-icon">🔑</div>
-            <h2>Enter Your OpenRouter API Key</h2>
-            <p>Get a free key at <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a></p>
-            <div class="input-group">
-                <input type="password" id="api-key-input" placeholder="sk-or-v1-..." autocomplete="off">
-                <button id="toggle-key-visibility" class="icon-btn" title="Toggle visibility">👁️</button>
-            </div>
-            <button id="save-api-key" class="btn btn-primary">Save & Continue</button>
-            <p class="modal-note">Your key is stored locally and never shared.</p>
-        </div>
-    </div>
+
 
     <!-- Camera Modal -->
     <div id="camera-modal" class="modal hidden">
@@ -57,10 +43,7 @@
         </div>
     </div>
 
-    <!-- Settings Button -->
-    <button id="settings-btn" class="settings-btn" title="Settings">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-    </button>
+
 
     <!-- ========== SCREEN 1: UPLOAD ========== -->
     <section id="screen-upload" class="screen active">

@@ -19,27 +19,33 @@ Turn any toy into a talking, real character using AI! Snap a photo or upload an 
 
 ## 🚀 Getting Started
 
-### 1. Get a Free API Key
+### 1. Set Up Vercel
 
-1. Go to [openrouter.ai/keys](https://openrouter.ai/keys)
-2. Sign up for free
-3. Create a new API key
+This app uses a Vercel Serverless Function (`api/openrouter.js`) to securely hide your API key from the frontend.
+
+1. Get a free key at [openrouter.ai/keys](https://openrouter.ai/keys)
+2. Import this repository into [Vercel](https://vercel.com/new)
+3. In the Vercel project settings, add an Environment Variable:
+   - **Key**: `OPENROUTER_API_KEY`
+   - **Value**: `sk-or-v1-...` (your key)
+4. Deploy!
 
 ### 2. Run Locally
 
+To run locally with the secure backend, use the Vercel CLI:
+
 ```bash
-git clone https://github.com/gaser-dev/toy-alive.git
-cd toy-alive
-npx -y serve .
+npm install -g vercel
+vercel dev
 ```
+*(Make sure to link your project and pull the `.env` file first, or create a `.env.local` file with your `OPENROUTER_API_KEY`)*
 
 ### 3. Use the App
 
-1. Enter your OpenRouter API key when prompted
-2. Snap a photo or upload a toy image
-3. Optionally describe your toy
-4. Click "Bring to Life" ✨
-5. Chat with your new talking friend!
+1. Snap a photo or upload a toy image
+2. Optionally describe your toy
+3. Click "Bring to Life" ✨
+4. Chat with your new talking friend!
 
 ## 🛠️ Tech Stack
 
