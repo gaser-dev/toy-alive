@@ -1,8 +1,8 @@
 // ===== OpenRouter API Integration =====
 
 const BACKEND_ENDPOINT = '/api/openrouter';
-const VISION_MODEL = 'meta-llama/llama-3.2-11b-vision-instruct:free';
-const CHAT_MODEL = 'meta-llama/llama-3.2-11b-vision-instruct:free';
+const VISION_MODEL = 'qwen/qwen2.5-vl-72b-instruct:free';
+const CHAT_MODEL = 'qwen/qwen2.5-vl-72b-instruct:free';
 
 class ToyAPI {
     async _call(model, messages, maxTokens = 1024) {
