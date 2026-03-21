@@ -200,17 +200,24 @@
         // Stop any existing stream
         stopCameraStream();
 
+        // Use 'ideal' facing mode to prevent OverconstrainedError on some Androids.
+        // Avoid strict width/height constraints as many Android cameras fail to satisfy them.
         const constraints = {
             video: {
-                facingMode: facingMode,
-                width: { ideal: 1280 },
-                height: { ideal: 960 }
+                facingMode: { ideal: facingMode }
             },
             audio: false
         };
 
         cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
         els.cameraVideo.srcObject = cameraStream;
+        
+        // Explicitly play the video for mobile browsers that ignore the autoplay attribute
+        try {
+            await els.cameraVideo.play();
+        } catch (e) {
+            console.warn("Video play was interrupted or requires interaction", e);
+        }
     }
 
     function stopCameraStream() {
