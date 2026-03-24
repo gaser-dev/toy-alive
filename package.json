@@ -1,6 +1,6 @@
 {
   "name": "toy-alive",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turn any toy into a talking, real character using AI",
   "main": "app.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gaser-dev/toy-alive.git"
+    "url": "git+https://github.com/gaser-dev/vivitoy.git"
   },
   "keywords": [
     "ai",
@@ -18,5 +18,8 @@
     "toy"
   ],
   "author": "gaser-dev",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
 }
